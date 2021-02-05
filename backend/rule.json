@@ -1,0 +1,13 @@
+[{
+        "title": "Post add",
+        "key": "post-add"
+    },
+    {
+        "title": "Post list",
+        "key": "post-list"
+    },
+    {
+        "title": "Post edit",
+        "key": "post-edit"
+    }
+]

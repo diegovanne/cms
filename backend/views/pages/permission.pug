@@ -1,0 +1,12 @@
+extends ../layout/master
+
+include ../mixin/dataTable
+block content
+    .main-card.mb-3.card
+        .card-body
+            h5.card-title Danh sách tài khoản
+            +dataTable(accounts, ['name', 'email'], '/admin/permission/edit/')
+        .show-noti
+    script(src="/jquery.min.js")
+    script(src="/backend/post.js")
+

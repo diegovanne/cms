@@ -1,0 +1,18 @@
+extends ../layout/master
+
+block content
+    h1 #{title}
+    .main-card.mb-3.card
+        .card-body
+            .form-group
+                input#idUser(type='hidden' name='id' value=`${id}`)
+            each item in rules
+                 div(style='display:flex;')
+                    input(type='checkbox' name='rule' value=`${item.key}` onclick=`check(event, '${item.key}' )` checked=availableRules.includes(item.key) ? true: false)
+                    label(for=`${item.key}`) #{item.title}
+            button.mb-2.mr-2.btn.btn-secondary(type='submit' class="btn-back") Back
+            button.mb-2.mr-2.btn.btn-primary(type='submit' class='approve') Approve
+                .show-noti
+block js
+    script(src="/backend/permission.js")
+

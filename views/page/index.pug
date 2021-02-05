@@ -1,0 +1,87 @@
+extends ../layout/master
+include ../mixin/index
+include ../mixin/paginate
+
+block content
+  .w3l-homeblock1.py-5
+    .container.pt-lg-5.pt-md-4
+      // block
+      .row
+        .col-lg-9
+          h3.section-title-left Featured posts 
+          .row
+            if featured1
+              .col-lg-5.col-md-6.item
+                +featured1(featured1)
+            .col-lg-7.col-md-6.mt-md-0.mt-5
+              .list-view.list-view1
+
+                each item, index in featured
+                  +featured(item, index)
+        .col-lg-3.trending.mt-lg-0.mt-5
+          h3.section-title-left Trending 
+          each item, index in trending
+            +trending(item, index)
+
+      // //block
+      // block
+      if highlight1
+        +hightlight1(highlight1)
+      // //block
+      // block
+      .item.mt-5.pt-lg-5
+        h3.section-title-left Today Highlights 
+        .row
+
+          each item, index in highlight
+            .col-lg-5.col-md-6
+              .list-view.list-view1
+                +highlight(item)(class=index > 1 ? 'mt-5': '')
+
+
+
+          .col-lg-2.col-sm-6.mt-lg-0.mt-5
+            .ad-img
+              a(href='#ad-img')
+                img.img-fluid(src='/assets/images/ad1.jpg' alt='ad image')
+      // //block
+      // block
+      .row.mt-5.pt-5
+        .col-lg-9.most-recent
+          h3.section-title-left Most Recent posts 
+          .list-view
+            each item, index in post1
+              +post1(item)(class=index > 0 ? "mt-5": '')
+
+            .row.most-recent-inner.my-5.py-lg-4
+              each item, index in post2
+                .col-md-6
+                  .list-view.list-view1
+                    +post2(item)(class="mt-5")
+
+
+            each item, index in post3
+              +post1(item)(class=index > 0 ? "mt-5": '')
+
+
+          // pagination.
+          +paginate([
+            {num: 1, url: '1'},
+            {num: 2, url: '2'},
+            {num: 3, url: '3'},
+            {num: 4, url: '4'},
+            {num: '....'},
+            {num: 15, url: 15},
+          ])
+          // //pagination
+        .col-lg-3.trending.mt-lg-0.mt-5.mb-lg-5
+          .pos-sticky
+            h3.section-title-left Trending 
+            each item, index in trending1
+              +trending(item, index)
+      // //block
+      // ad block
+      .ad-block.text-center.mt-5
+        a(href='#url')
+          img.img-fluid(src='/assets/images/ad.gif' alt='ad image')
+      // //ad block
